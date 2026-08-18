@@ -21,3 +21,11 @@ class Solution:
 for num in range(len(nums) + 1):
     if num not in numbers:
         return num
+
+# perfect mathimatical way 
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        # Optimal O(N) Time and O(1) Space:
+        n = len(nums)
+        expected_sum = n * (n + 1) // 2
+        return expected_sum - sum(nums)
