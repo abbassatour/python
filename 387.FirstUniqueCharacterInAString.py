@@ -15,7 +15,7 @@ class Solution:
         return -1 
             
         
-# better naming way 
+# Could you rewrite my code using ideal naming conventions
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         # 1. Guard Clause for boundary condition
