@@ -26,3 +26,15 @@ class Solution:
             return True
         else : 
             return False 
+
+#ideal naming 
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        if len (sentence) < 26 : 
+            return False 
+        unique_letters = set(sentence)
+        
+        if len(unique_letters  ) == 26 :
+            return True
+        else : 
+            return False 
