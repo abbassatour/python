@@ -12,3 +12,12 @@ class Solution:
 
         return n
 
+#without recursion
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        T = [0 , 1 , 1 ] 
+        if n < 3 : 
+            return T[n]
+        for index in range(3 , n + 1) : 
+            T.append( T[index - 1] + T[index - 2] + T[index - 3 ] )
+        return T[n]
