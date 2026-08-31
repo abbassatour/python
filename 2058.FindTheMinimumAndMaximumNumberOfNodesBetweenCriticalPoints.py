@@ -40,5 +40,42 @@ class Solution:
             
         return [min_dis, max_dis]
 
-            
-        
+#AI 
+class Solution:
+    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> list[int]:
+        # Guard clause (early exit condition): Critical points require at least 3 nodes
+        if not head or not head.next or not head.next.next:
+            return [-1, -1]
+
+        first_idx = -1
+        prev_idx = -1
+        min_dist = float('inf')
+
+        prev = head
+        curr = head.next
+        curr_idx = 1
+
+        while curr.next:
+            # Self-documenting condition checks
+            is_local_max = curr.val > prev.val and curr.val > curr.next.val
+            is_local_min = curr.val < prev.val and curr.val < curr.next.val
+
+            if is_local_max or is_local_min:
+                if first_idx == -1:
+                    first_idx = curr_idx
+                else:
+                    min_dist = min(min_dist, curr_idx - prev_idx)
+                
+                prev_idx = curr_idx
+
+            # Advance pointers
+            prev = curr
+            curr = curr.next
+            curr_idx += 1
+
+        # If fewer than 2 critical points were found
+        if first_idx == prev_idx:
+            return [-1, -1]
+
+        max_dist = prev_idx - first_idx
+        return [min_dist, max_dist]
