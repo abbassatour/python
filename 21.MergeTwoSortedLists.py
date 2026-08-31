@@ -40,3 +40,24 @@ class Solution:
         elif curr2:
             head.next = curr2
         return first_node 
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # A dummy node acts as a temporary starting anchor
+        dummy = ListNode(0)
+        tail = dummy
+
+        # Phase 1: Merge while both exist
+        while list1 and list2:
+            if list1.val < list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+
+        # Phase 2: Attach remaining nodes in one step
+        tail.next = list1 if list1 else list2
+
+        return dummy.next
