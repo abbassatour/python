@@ -6,10 +6,11 @@ class Solution:
         
         prev_val = head.val
         head = head.next
-        first_point = 0 
+
         curr_dis = 0
         longest_dis =0
         first_critical = False
+
         while head:
             if not head.next:
                 break
@@ -33,8 +34,6 @@ class Solution:
             prev_val = head.val
             head = head.next
              
-
-
         if max_dis == 0 : 
             return [-1 , -1]
             
