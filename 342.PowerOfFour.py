@@ -28,6 +28,14 @@ class Solution:
         # Set lookup in Python operates in O(1) average time complexity
         return n in powers_of_four
 
+
+#more direct : 
+class Solution:
+    # Time: O(1) | Space: O(1)
+    def isPowerOfFour(self, n: int) -> bool:
+        # 4^15 is the maximum power of 4 that fits in a 32-bit signed integer
+        return n in {4 ** i for i in range(16)}
+
 #recursion
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
