@@ -1,5 +1,4 @@
-nums = [2, 7, 11, 15]
-target = 9
+
 
 
 '''
@@ -21,8 +20,3 @@ class Solution:
                 return [i , hash[target- num]]
             hash[num ] =i 
     
-
-                    
-sol = Solution()
-
-sol.twoSum( nums ,target)
