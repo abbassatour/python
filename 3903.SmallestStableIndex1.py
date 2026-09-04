@@ -46,3 +46,32 @@ look into optimizing the time complexity if you'd like
 '''
 
 
+#AI
+class Solution:
+    def firstStableIndex(self, nums: list[int], k: int) -> int:
+        n = len(nums)
+        if n == 0:
+            return -1
+
+        # Step 1: Precompute the suffix minimum array
+        # suffix_min[i] will hold the minimum value from index i to n - 1
+        suffix_min = [0] * n
+        suffix_min[-1] = nums[-1]
+
+        for i in range(n - 2, -1, -1):
+            suffix_min[i] = min(nums[i], suffix_min[i + 1])
+
+        # Step 2: Forward pass to track prefix maximum and check stability
+        prefix_max = float('-inf')
+
+        for i in range(n):
+            prefix_max = max(prefix_max, nums[i])
+            
+            # Check if the instability score is <= k
+            if prefix_max - suffix_min[i] <= k:
+                return i
+
+        return -1
+
+# Time Complexity  : O(N) -> Two linear passes
+# Space Complexity : O(N) -> To store the suffix_min array
