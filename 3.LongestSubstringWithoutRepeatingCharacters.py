@@ -61,4 +61,30 @@ class Solution:
         return longest_uniq_sub
              
 
+#Mineeeeeeeeeeee
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0 :
+            return 0
+        max_len = 0
+        left = 0 
+        last_seen = {}              
         
+        for right , char in enumerate(s) : 
+            
+            if char in last_seen :
+                left =  max(last_seen[char] + 1 , left)
+            last_seen[char] = right 
+
+            max_len = max(max_len, right - left )
+            
+        return max_len +1
+
+        """
+        a: 0 , 0  : max = 1 : last = {a:0}
+        b: 0 , 1 : max = 2 : last = a:0  , b: 1 
+        c: 0 , 2 : max = 3 : last  = a:0 ,b : 1 , c :2
+        a: 1 , 3 : max = 3 : last = a:3 , b : 1 , c: 2 
+        b: 2 , 4 : max = 3 : last =  a: 3, b: 4 , c: 2
+        b: 5 , 5 : max = 3 : last = a: 3 , b: 5 , c : 2
+        """
