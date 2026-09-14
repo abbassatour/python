@@ -39,4 +39,4 @@ class Solution:
 '''
 
 # Time Complexity: O(N) linear
-# Space Complexity: O(1) constent
+# Space Complexity: O(1) constant
